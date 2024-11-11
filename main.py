@@ -113,10 +113,10 @@ def handle_weather_query(query: str) -> str:
     if "error" in weather_info:
         return weather_info["error"]
 
-    return send_to_sambanova(weather_info, lang)
+    return send_to_sambanova(weather_info, lang), weather_info
 
 
 @app.post('/messenger/')
 async def handle_bot_answer(query: MessageRequest):
-    answer = handle_weather_query(query.query)
-    return {"response": answer}
+    answer, data = handle_weather_query(query.query)
+    return {"response": answer, "data": data}
