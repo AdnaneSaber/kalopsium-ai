@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 from config import config
 import openai
 import requests
@@ -6,6 +7,11 @@ from fastapi import FastAPI
 
 
 app = FastAPI()
+
+
+class MessageRequest(BaseModel):
+    query: str
+
 
 api_key = config['OPENWEATHER_API_KEY']
 
@@ -100,6 +106,7 @@ def handle_weather_query(query: str) -> str:
     return send_to_sambanova(weather_info)
 
 
-@app.post('/messenger')
-async def handle_message(query: str):
-    return handle_weather_query(query)
+@app.post('/messenger/')
+async def handle_bot_answer(query: MessageRequest):
+    answer = handle_weather_query(query.query)
+    return {"response": answer}
