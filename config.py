@@ -6,4 +6,3 @@ config = {
     **dotenv_values(".env.local"),
     **os.environ,
 }
-print(config)

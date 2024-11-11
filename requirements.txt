@@ -6,11 +6,16 @@ colorama==0.4.6
 distro==1.9.0
 fastapi==0.115.4
 h11==0.14.0
+h2==4.1.0
+hpack==4.0.0
 httpcore==1.0.6
 httpx==0.27.2
+Hypercorn==0.17.3
+hyperframe==6.0.1
 idna==3.10
 jiter==0.7.0
 openai==1.54.3
+priority==2.0.0
 pydantic==2.9.2
 pydantic_core==2.23.4
 python-dotenv==1.0.1
@@ -20,3 +25,4 @@ starlette==0.41.2
 tqdm==4.67.0
 typing_extensions==4.12.2
 urllib3==2.2.3
+wsproto==1.2.0
