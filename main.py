@@ -66,7 +66,7 @@ def process_user_query(query: str) -> dict:
         "condition": weather_data["weather"][0]["description"],
         "city": city,
     }
-    return weather_info, lang
+    return weather_info, lang, data
 
 
 def send_to_sambanova(weather_info: dict, lang: str) -> str:
@@ -108,12 +108,12 @@ def send_to_sambanova(weather_info: dict, lang: str) -> str:
 
 
 def handle_weather_query(query: str) -> str:
-    weather_info, lang = process_user_query(query)
+    weather_info, lang, data = process_user_query(query)
 
     if "error" in weather_info:
         return weather_info["error"]
 
-    return send_to_sambanova(weather_info, lang), weather_info
+    return send_to_sambanova(weather_info, lang), data
 
 
 @app.post('/messenger/')
